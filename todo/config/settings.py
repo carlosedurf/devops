@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'todo',
         'USER': 'todo',
         'PASSWORD': 'todo',
-        'HOST': 'todo-db',
+        'HOST': '10.101.18.168',
         'PORT': '3306',
     }
 }

@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -18,3 +19,16 @@ spec:
       value: "todo"
     - name: MYSQL_DATABASE
       value: "todo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: todo
+spec:
+  type: LoadBalancer
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306

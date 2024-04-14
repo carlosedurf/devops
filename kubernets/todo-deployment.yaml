@@ -18,9 +18,9 @@ spec:
         image: carlosedurf/todo-app:latest 
         ports:
         - containerPort: 8000
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 8000
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10

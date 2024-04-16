@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Initialize') {
+            steps {
+                sh '''
+                  echo "PATH=${PATH}"
+                  python3 --version
+                '''
+            }
+        }
+        
+        stage("Checkout") {
+           steps {
+                git(
+                    url: 'https://github.com/carlosedurf/devops.git',
+                    branch: 'main'
+                )
+            }
+        }
+        
+        stage("Install Dependencies") {
+           steps {
+                sh '''
+                cd todo
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install --no-cache-dir -r requirements.txt 
+                '''
+            }
+        }
+        
+        stage("Run Tests") {
+           steps {
+                sh '''
+                cd todo
+                . venv/bin/activate
+                python manage.py test
+                '''
+            }
+        }
+    }
+}
